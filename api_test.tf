@@ -28,7 +28,8 @@ resource "datadog_synthetics_test" "default" {
   }
   request_definition {
     url    = each.value.request_definition.url
-    method = "GET"
+    method = each.value.request_definition.method
+    body = each.value.request_definition.body
   }
   request_headers = each.value.request_headers
   status = each.value.status

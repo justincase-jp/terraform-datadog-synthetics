@@ -12,6 +12,8 @@ variable "settings" {
       type = string
       request_definition = object({
         url    = string
+        method = string
+        body   = optional(string)
       })
       request_headers = optional(object({
         Authorization = optional(string)

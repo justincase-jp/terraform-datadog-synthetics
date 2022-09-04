@@ -32,7 +32,7 @@ variable "settings" {
           renotify_interval = number
         })
       })
-      status  = string
+      status = string
     })
   )
 }

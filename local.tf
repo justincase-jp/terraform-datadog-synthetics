@@ -9,6 +9,6 @@ Datadogから各種メトリクスを確認し原因の特定をお願いしま�
 EOM
 
   settings = defaults(var.settings, {
-      request_headers = {}
-    })
+    request_headers = {}
+  })
 }

@@ -1,7 +1,7 @@
 resource "datadog_synthetics_test" "default" {
   for_each = {
     for s in var.settings : s.request_definition.url => s
-      if s.type == "default"
+    if s.type == "default"
   }
   assertion {
     operator = "lessThan"
@@ -29,10 +29,10 @@ resource "datadog_synthetics_test" "default" {
   request_definition {
     url    = each.value.request_definition.url
     method = each.value.request_definition.method
-    body = each.value.request_definition.body
+    body   = each.value.request_definition.body
   }
   request_headers = each.value.request_headers
-  status = each.value.status
-  tags   = var.tags
-  type   = "api"
+  status          = each.value.status
+  tags            = var.tags
+  type            = "api"
 }

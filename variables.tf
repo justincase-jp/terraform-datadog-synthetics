@@ -15,9 +15,15 @@ variable "settings" {
         method = string
         body   = optional(string)
       })
-      request_headers = optional(object({
-        Authorization = optional(string)
-      }))
+      request_headers = optional(
+        object({
+          Authorization = optional(string)
+          Content-Type  = optional(string)
+        })
+        # TODO: Terraform v1.3でmodifierによるデフォルト値のセットがサポートされたら使う
+        # https://discuss.hashicorp.com/t/request-for-feedback-optional-object-type-attributes-with-defaults-in-v1-3-alpha/40550
+        # }), {}
+      )
       response = object({
         time = number
         code = number

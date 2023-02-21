@@ -14,7 +14,7 @@ resource "datadog_synthetics_test" "default" {
     type     = "statusCode"
   }
   locations = ["aws:ap-northeast-1"]
-  message   = "${local.message} ${var.notify_slack_channel}"
+  message   = "${local.message} ${var.notify_slack_channel} ${var.pagerduty_service}"
   name      = "API test on ${each.value.request_definition.url}"
   options_list {
     tick_every = each.value.options_list.tick_every

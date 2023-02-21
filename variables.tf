@@ -50,3 +50,7 @@ variable "is_mention_channel" {
 variable "notify_slack_channel" {
   type = string
 }
+
+variable "pagerduty_service" {
+  type = string
+}

@@ -53,4 +53,5 @@ variable "notify_slack_channel" {
 
 variable "pagerduty_service" {
   type = string
+  default = ""
 }

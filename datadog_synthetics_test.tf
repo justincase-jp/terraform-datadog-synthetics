@@ -31,9 +31,11 @@ resource "datadog_synthetics_test" "default" {
           for tf in each.value.options_list.scheduling.timeframes : each.key => tf
         }
 
-        day  = each.value.day
-        from = each.value.from
-        to   = each.value.to
+        content {
+          day  = timeframes.day
+          from = timeframes.from
+          to   = timeframes.to
+        }
       }
       timezone = each.value.options_list.scheduling.timezone
     }

@@ -26,8 +26,14 @@ resource "datadog_synthetics_test" "default" {
       renotify_interval = each.value.options_list.monitor_options.renotify_interval
     }
     scheduling {
-      timeframes = [for tf in each.value.options_list.scheduling.timeframes : tf]
-      timezone   = each.value.options_list.scheduling.timezone
+      dynamic "timeframes" {
+        for_each = each.value.options_list.scheduling.timeframes
+
+        day  = timeframes.day
+        from = timeframes.from
+        to   = timeframes.to
+      }
+      timezone = each.value.options_list.scheduling.timezone
     }
   }
   request_definition {

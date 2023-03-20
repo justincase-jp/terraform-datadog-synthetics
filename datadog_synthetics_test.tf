@@ -26,7 +26,7 @@ resource "datadog_synthetics_test" "default" {
       renotify_interval = each.value.options_list.monitor_options.renotify_interval
     }
     scheduling {
-      timeframes = each.value.options_list.scheduling.timeframes
+      timeframes = [for tf in each.value.options_list.scheduling.timeframes : tf]
       timezone   = each.value.options_list.scheduling.timezone
     }
   }

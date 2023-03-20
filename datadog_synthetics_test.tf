@@ -32,9 +32,9 @@ resource "datadog_synthetics_test" "default" {
         }
 
         content {
-          day  = timeframes.day
-          from = timeframes.from
-          to   = timeframes.to
+          day  = each.value.day
+          from = each.value.from
+          to   = each.value.to
         }
       }
       timezone = each.value.options_list.scheduling.timezone

@@ -27,12 +27,10 @@ resource "datadog_synthetics_test" "default" {
     }
     scheduling {
       dynamic "timeframes" {
-        for_each = {
-          for day in each.value.options_list.scheduling.days : each.key => day...
-        }
+        for_each = each.value.options_list.scheduling.days
 
         content {
-          day  = timeframes[each.key].value
+          day  = timeframes.value
           from = each.value.options_list.scheduling.from
           to   = each.value.options_list.scheduling.to
         }

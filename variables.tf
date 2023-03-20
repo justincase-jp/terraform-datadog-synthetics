@@ -37,6 +37,16 @@ variable "settings" {
         monitor_options = object({
           renotify_interval = number
         })
+        scheduling = object({
+          timeframes = list(
+            object({
+              day  = number
+              from = string
+              to   = string
+            })
+          )
+          timezone = string
+        })
       })
       status = string
     })

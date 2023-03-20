@@ -25,7 +25,10 @@ resource "datadog_synthetics_test" "default" {
     monitor_options {
       renotify_interval = each.value.options_list.monitor_options.renotify_interval
     }
-    scheduling = each.value.options_list.scheduling
+    scheduling {
+      timeframes = each.value.options_list.scheduling.timeframes
+      timezone   = each.value.options_list.scheduling.timezone
+    }
   }
   request_definition {
     url    = each.value.request_definition.url

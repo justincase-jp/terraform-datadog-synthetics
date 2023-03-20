@@ -39,13 +39,9 @@ variable "settings" {
         })
         scheduling = optional(
           object({
-            timeframes = list(
-              object({
-                day  = number
-                from = string
-                to   = string
-              })
-            )
+            days     = list(number)
+            from     = string
+            to       = string
             timezone = string
           })
         )

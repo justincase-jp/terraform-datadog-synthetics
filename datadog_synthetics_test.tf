@@ -28,7 +28,7 @@ resource "datadog_synthetics_test" "default" {
     scheduling {
       dynamic "timeframes" {
         for_each = {
-          for tf in each.value.options_list.scheduling.timeframes : each.key => tf
+          for tf in each.value.options_list.scheduling.timeframes : each.key => tf...
         }
 
         content {
